@@ -1,5 +1,5 @@
-## Space Invaders - Gra Przeglądarkowa
-Klasyczna gra Space Invaders napisana w **Pygame**, 
+## Space Invaders style game - Gra Przeglądarkowa
+Gra w stylu Space Invaders napisana w **Pygame**, 
 skompilowana do **WebAssembly (WASM)** i zintegrowana
 z backendem **Flask**.
 
