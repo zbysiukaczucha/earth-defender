@@ -14,8 +14,8 @@ z backendem **Flask**.
 
 1.  **Sklonuj repozytorium:**
     ```bash
-    git clone [https://github.com/TWOJ_NICK/space-invaders.git](https://github.com/TWOJ_NICK/space-invaders.git)
-    cd space-invaders
+    git clone https://github.com/zbysiukaczucha/space-invaders-online.git
+    cd space-invaders-online
     ```
 
 2.  **Stwórz środowisko wirtualne:**
