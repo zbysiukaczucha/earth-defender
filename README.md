@@ -33,7 +33,7 @@ z backendem **Flask**.
 4.  **Skompiluj grę (jeśli wprowadziłeś zmiany w main.py):**
     ```bash
     pygbag --build main.py
-    # Skopiuj zawartość build/web do static/game_build/
+    # Skopiuj space-invaders-online.apk z build/web do static/game_build/
     ```
 
 5.  **Uruchom serwer:**

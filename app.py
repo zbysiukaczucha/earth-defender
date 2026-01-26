@@ -31,8 +31,7 @@ def play_game():
     Serwuje plik index.html wygenerowany przez Pygbag.
     Gra znajduje się w folderze static/game_build.
     """
-    # Flask domyślnie szuka w templates, ale my serwujemy statyczny build Pygbaga
-    return send_from_directory('static/game_build', 'index.html')
+    return render_template('index.html')
 
 
 # Flask musi wiedzieć, jak serwować pliki .wasm i .apk
@@ -43,36 +42,14 @@ def serve_game_files(filename):
 
 @app.route('/leaderboard')
 def leaderboard_page():
-    """Wyświetla prostą tabelę HTML z wynikami."""
+    """Wyświetla tabelę wyników używając szablonu HTML."""
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT name, score FROM scores ORDER BY score DESC LIMIT 10")
-        scores = cursor.fetchall()
+        scores = cursor.fetchall()  # To zwraca listę krotek: [('Adam', 100), ('Ewa', 50)]
 
-    # Prosty HTML wewnątrz kodu (możesz przenieść do templates/leaderboard.html)
-    html = """
-    <html>
-    <head>
-        <title>Top 10 Graczy</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    </head>
-    <body class="container mt-5">
-        <h1>Najlepsi Obrońcy Ziemi</h1>
-        <table class="table table-striped">
-            <thead><tr><th>Gracz</th><th>Wynik</th></tr></thead>
-            <tbody>
-    """
-    for name, score in scores:
-        html += f"<tr><td>{name}</td><td>{score}</td></tr>"
-
-    html += """
-            </tbody>
-        </table>
-        <a href="/" class="btn btn-primary">Zagraj Ponownie</a>
-    </body>
-    </html>
-    """
-    return html
+    # Przekazujemy zmienną 'scores' do szablonu
+    return render_template('leaderboard.html', scores=scores)
 
 
 # --- API (Backend) ---
