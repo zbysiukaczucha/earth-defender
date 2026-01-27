@@ -143,7 +143,7 @@ async def main():
 
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Space Invaders Python")
+    pygame.display.set_caption("Earth Defender")
     clock = pygame.time.Clock()
     font = pygame.font.Font(None, 36)
 
