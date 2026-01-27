@@ -1,4 +1,4 @@
-## Space Invaders style game - Gra Przeglądarkowa
+## Earth Defender - Gra Przeglądarkowa
 Gra w stylu Space Invaders napisana w **Pygame**, 
 skompilowana do **WebAssembly (WASM)** i zintegrowana
 z backendem **Flask**.
@@ -14,7 +14,7 @@ z backendem **Flask**.
 
 1.  **Sklonuj repozytorium:**
     ```bash
-    git clone https://github.com/zbysiukaczucha/space-invaders-online.git
+    git clone https://github.com/zbysiukaczucha/earth-defender.git
     cd space-invaders-online
     ```
 
@@ -33,7 +33,7 @@ z backendem **Flask**.
 4.  **Skompiluj grę (jeśli wprowadziłeś zmiany w main.py):**
     ```bash
     pygbag --build main.py
-    # Skopiuj space-invaders-online.apk z build/web do static/game_build/
+    # Skopiuj earth-defender.apk z build/web do static/game_build/
     ```
 
 5.  **Uruchom serwer:**
