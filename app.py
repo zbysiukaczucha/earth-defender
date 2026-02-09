@@ -4,9 +4,8 @@ import sqlite3
 import os
 
 app = Flask(__name__)
-swagger = Swagger(app)  # Automatyczna dokumentacja API
+swagger = Swagger(app)
 
-# Konfiguracja bazy danych
 DB_NAME = "scores.db"
 
 
@@ -23,8 +22,6 @@ def init_db():
         conn.commit()
 
 
-# --- ROUTING (Strony WWW) ---
-
 @app.route('/')
 def play_game():
     """
@@ -34,7 +31,6 @@ def play_game():
     return render_template('index.html')
 
 
-# Flask musi wiedzieć, jak serwować pliki .wasm i .apk
 @app.route('/<path:filename>')
 def serve_game_files(filename):
     return send_from_directory('static/game_build', filename)
@@ -46,13 +42,10 @@ def leaderboard_page():
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT name, score FROM scores ORDER BY score DESC LIMIT 10")
-        scores = cursor.fetchall()  # To zwraca listę krotek: [('Adam', 100), ('Ewa', 50)]
+        scores = cursor.fetchall()
 
-    # Przekazujemy zmienną 'scores' do szablonu
     return render_template('leaderboard.html', scores=scores)
 
-
-# --- API (Backend) ---
 
 @app.route('/api/score', methods=['POST'])
 def add_score():
